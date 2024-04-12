@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.bestzpr'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+bootJar {
+	enabled = true
+	launchScript() // 生成启动脚本
+}
+
+repositories {
+	maven { url 'https://repo.spring.io/snapshot' }
+	maven { url 'https://repo.spring.io/milestone' }
+	mavenCentral()
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web:3.1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.4'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket:3.0.4'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.0.4'
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.1'
+	implementation 'org.projectlombok:lombok:1.18.26'
+	implementation 'com.google.zxing:core:3.5.1'
+	implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+	implementation 'com.aliyun.oss:aliyun-sdk-oss:3.16.1'
+	implementation 'com.aliyun:aliyun-java-sdk-core:4.6.3'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.0'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
